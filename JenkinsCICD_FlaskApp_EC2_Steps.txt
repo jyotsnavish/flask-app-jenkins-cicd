@@ -27,7 +27,7 @@ for password > /var/lib/jenkins/secrets/initialAdminPassword > enter password > 
 #access jenkins from browser
 admin
 admin@123 
-http://18.234.255.52:8080/
+http://public_ip_serve:8080/
 
 #Authetntication
 now jenkins should access my github repo for that create ssh pub key on ec2 > ssh-keygen
@@ -96,7 +96,7 @@ github and jenkins should get connected (gpg key should be there on github)
 
 port 8080 is only accesible form my ip > github should be able to access it > AWS SG port 8080 anywhere
 
-Github > repo > setting of repo > webhook > url : jenkins url (http://18.234.255.52:8080/github-webhook/) > content-type: application/json
+Github > repo > setting of repo > webhook > url : jenkins url (http://public_ip_serve:8080/github-webhook/) > content-type: application/json
 Once you get the tick > means webhook intgeration with jenkins is successful
 
 Jenkins  job >  configure >  build trigger > GitHub hook trigger for GITScm polling 
