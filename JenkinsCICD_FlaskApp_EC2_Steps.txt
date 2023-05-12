@@ -1,14 +1,10 @@
 CI CD Pipeline using Flask app
 
-https://www.youtube.com/watch?v=nplH3BzKHPk&list=PLlfy9GnSVerRqYJgVYO0UiExj5byjrW8u&index=15
-
 EC2 > Jenkins > Github repo > Integration of Jenkins and GitHub(ssh) > Excute App using dockerfile via Jenkins (build steps) > Webhook configure  so that github send trigger if any changes on it to jenkins (build trigger)
 
 #Install Jenkins
 
 #EC2 ubuntu
-https://www.trainwithshubham.com/blog/install-jenkins-on-aws
-
 sudo apt update
 sudo apt install openjdk-11-jre
 java -version
@@ -26,7 +22,7 @@ for password > /var/lib/jenkins/secrets/initialAdminPassword > enter password > 
 
 #access jenkins from browser
 admin
-admin@123 
+$password
 http://public_ip_serve:8080/
 
 #Authetntication
@@ -94,7 +90,7 @@ Install Plugin > Manage Jenkins > Available Plugin > jenkins integration > insta
 #configure webhook
 github and jenkins should get connected (gpg key should be there on github)
 
-port 8080 is only accesible form my ip > github should be able to access it > AWS SG port 8080 anywhere
+port 8080 is only accesible from my ip > github should be able to access it > AWS SG port 8080 anywhere
 
 Github > repo > setting of repo > webhook > url : jenkins url (http://public_ip_serve:8080/github-webhook/) > content-type: application/json
 Once you get the tick > means webhook intgeration with jenkins is successful
@@ -102,5 +98,5 @@ Once you get the tick > means webhook intgeration with jenkins is successful
 Jenkins  job >  configure >  build trigger > GitHub hook trigger for GITScm polling 
 
 #Testing
-DO some change in file (I changes in echo.html)
+DO some change in file
 On jenkins build is automatically triggered without any manual interaction.
