@@ -34,52 +34,13 @@ new item > name of app > freestyle (for test)
 (For testing created one public repo on github with same flask app) https://github.com/jyotsnavish/flask-app-jenkins-cicd
 
 Credentials > kind:ssh username with private key > id:github-jenkins > username:ubuntu > enter private key > save item
-Build now > console output 
 
-#Execute the app
-On Ec2 Ubuntu > cd /var/lib/jenkins/workspace/Flask-App-Project 
-install the dependencies for running the app
-apt install python3
-python3 --version
-apt install pip
-pip --version
-pip install flask
-flask --version
-
-python3 main.py (running on port 5000)
-
-Expose 5000 port in AWS SG for all
-browser > http://public_ip_server:5000/
-
-
-#building docker image
-cd /var/lib/jenkins/workspace/Flask-App-Project 
-docker build -t flask-app:v1 .   (As already my dockerfile is present)
-docker run -it --name flask-app -p 5000:5000 -d flask-app:v1
-browser > http://public_ip_server:5000/
-
-#kill the container
-docker kill container_id
-
-#Go to Jenkins job
 Build Steps > Shell > Add docker build and docker run command 
 {
 docker stop flask-app || true && docker rm flask-app || true
 docker build -t flask-app:v1 .
 docker run -it --name flask-app -p 5000:5000 -d flask-app:v1
 }
-
-Build now 
-
-
-Error1 : Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Post 
-Solution:
-sudo usermod -a -G docker jenkins
-systemctl restart jenkins.service
-
-Error2: Error response from daemon: Conflict. The container name "/flask-app" is already in use by container
-Solution > got to server > docker rm container_name -flask
-
 
 #Automatic jenkins pipeline gets executed when code is deployed on github
 
@@ -97,7 +58,3 @@ Github > repo > setting of repo > webhook > url : jenkins url (http://public_ip_
 Once you get the tick > means webhook intgeration with jenkins is successful
 
 Jenkins  job >  configure >  build trigger > GitHub hook trigger for GITScm polling 
-
-#Testing
-DO some change in file
-On jenkins build is automatically triggered without any manual interaction.
