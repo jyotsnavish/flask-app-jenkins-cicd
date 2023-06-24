@@ -1,4 +1,4 @@
-abcCI CD Pipeline using Flask app
+CI CD Pipeline using Flask app
 
 EC2 > Jenkins > Github repo > Integration of Jenkins and GitHub(ssh) > Excute App using dockerfile via Jenkins (build steps) > Webhook configure  so that github send trigger if any changes on it to jenkins (build trigger)
 
