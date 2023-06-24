@@ -64,6 +64,7 @@ docker kill container_id
 #Go to Jenkins job
 Build Steps > Shell > Add docker build and docker run command 
 {
+docker stop flask-app || true && docker rm flask-app || true
 docker build -t flask-app:v1 .
 docker run -it --name flask-app -p 5000:5000 -d flask-app:v1
 }
