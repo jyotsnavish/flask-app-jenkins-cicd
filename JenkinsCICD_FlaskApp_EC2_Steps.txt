@@ -4,7 +4,7 @@ EC2 > Jenkins > Github repo > Integration of Jenkins and GitHub(ssh) > Excute Ap
 
 #Install Jenkins
 
-#EC2 ubuntu
+#ubuntu (https://phoenixnap.com/kb/install-jenkins-ubuntu)
 sudo apt update
 sudo apt install openjdk-11-jre
 java -version
